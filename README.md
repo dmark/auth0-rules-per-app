@@ -82,17 +82,18 @@ deploy the application to a third party service provider like Heroku then you ne
 
 
 
-5. Run the app.
+4. Run the app.
 
 ```bash
 npm start
 ```
 
-The app will be served at `localhost:3000`. To deploy the application to Heroku create an account in https://www.heroku.com/. Then commit the application source files to heroku repo. I recommend using the [heroku cli](https://devcenter.heroku.com/articles/heroku-cli) Add the 
+The app will be served at `localhost:3000`. To deploy the application to Heroku create an account in https://www
+.heroku.com/. Then commit the application source files to heroku repo. I recommend using the [heroku cli](https://devcenter.heroku.com/articles/heroku-cli). Add the 
 settings from .env file to 
 https://dashboard.heroku.com/apps/your-app-name/settings
 
-You might choose to deploy your app with any other service provider as per your comfort with their service.
+You might choose to deploy your app with any other service provider as per your comfort level with their service.
 
 
 ## Explanation of code logic
