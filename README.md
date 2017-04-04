@@ -1,22 +1,24 @@
 # Show Rules applied per Application using Auth0 Management API v2
 
-This is a sample application that will list down the Rules running on each Auth0 Client. On successful login, the 
-application page will show the list of all Clients and the Rules that run on each of them. A sample deployment looks as 
-follows:
+This is a sample application that will list down the Rules that run on each Auth0 Client. On successful login, the 
+application page will show the list of all Clients and the Rules that run on each of them. A sample deployed app page 
+looks as follows:
 ![App screenshot](/doc/app-screenshot.png?raw=true)
 
 Please follow the following steps to setup the application code on your localhost.
 
 ## Auth0 configuration
-1. You need to first create a Node.js client in Auth0. Go to the [Auth0 Clients page](https://manage.auth0.com/#/clients) and click on `Create Client` button. Then select `Regular Web Applications` and click on the Create 
+1. Sign in to your Auth0 account. If you don't yet have an Auth0 account, [sign up](https://auth0.com/signup) for free.
+
+2. You need to first create a Node.js client in Auth0. Go to the [Auth0 Clients page](https://manage.auth0.com/#/clients) and click on `Create Client` button. Then select `Regular Web Applications` and click on the Create 
 button. Select `Node.js` from the list of available technologies. Give a name to the client, e.g. `ListAppRulesUsingMngmtApiV2`
 
-2. Add `http://localhost:3000/callback` to the list of Allowed Callback URLs in the client settings page.
+3. Add `http://localhost:3000/callback` to the list of Allowed Callback URLs in the client settings page.
 
-3. Create a Non Interactive Client `API Explorer Client`. We will need this client to make calls to the Management API 
+4. Create a Non Interactive Client `API Explorer Client`. We will need this client to make calls to the Management API 
 from our application code.
 
-4. Create a Whitelist Rule with following code
+5. Create a Whitelist Rule with following code
 ```javascript
 function (user, context, callback) {
     if (context.clientName === 'ListAppRulesUsingMngmtApiV2') {
@@ -57,8 +59,7 @@ cp .env.example .env
 ```
 
 `.env` file contains your Auth0 Client ID and Secret. Replace 
-the values for `AUTH0_CLIENT_ID`, `AUTH0_DOMAIN`, `AUTH0_CLIENT_SECRET`, `MANAGEMENT_API_CLIENT_ID` and `MANAGEMENT_API_CLIENT_SECRET` with your Auth0 credentials. If 
-you don't  yet have an Auth0 account, [sign up](https://auth0.com/signup) for free.
+the values for `AUTH0_CLIENT_ID`, `AUTH0_DOMAIN`, `AUTH0_CLIENT_SECRET`, `MANAGEMENT_API_CLIENT_ID` and `MANAGEMENT_API_CLIENT_SECRET` with your Auth0 credentials. 
 
 Following are the keys set in the .env file
 
@@ -111,7 +112,7 @@ conditions are handled to show the rules per application:
 We find out which application a rule applies (or does not apply) by looking at the Rules script and using string 
 Regular Expressions to parse it.
 
-There are two preferable algorithms to achieve this. Following are the pusedo code. We have used the code which 
+There are two preferable algorithms to achieve this. Following are the pseudo code. We have used the code which 
 executes faster:
 ### More readable code
 Since the problem statement is around rules per client, a readable code will be to loop through each client and find out all matching rules for the client
