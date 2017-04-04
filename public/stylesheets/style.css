@@ -1,0 +1,28 @@
+body {
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+    color: #00B7FF;
+}
+
+li {
+    list-style: none;
+}
+
+.client {
+    background-color: wheat;
+    border-radius: 5px;
+    height: 20px;
+    margin: 2px;
+    padding: 10px;
+}
+
+.rule {
+    background-color: lightblue;
+    border-radius: 5px;
+    height: 20px;
+    margin: 2px 2px 2px 30px;
+    padding: 10px;
+}
