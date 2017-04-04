@@ -151,7 +151,11 @@ For rule in rules:
 client.rules in all clients contains the list of rules that apply to this client                    
 ```
  
-  
+
+## Sample Deployment
+You can check a sample [Heroku](https://auth0-rules-per-app.herokuapp.com) deployment of this application if your 
+email has been added in the Whitelist users for this application.
+
 ## License
 
 This project is licensed under the MIT license. See the [LICENSE](LICENSE) file for more info.
