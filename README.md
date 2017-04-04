@@ -57,20 +57,19 @@ Following are the keys set in the .env file
 `AUTH0_CLIENT_ID` Get the Client ID from the [Auth0 Clients page](https://manage.auth0.com/#/clients)
 
 `AUTH0_DOMAIN` Click on this Client in the [Auth0 Clients page](https://manage.auth0.com/#/clients) and get the 
-Domain details
+Domain 
 
 `AUTH0_CLIENT_SECRET` Click on this client in the [Auth0 Clients page](https://manage.auth0.com/#/clients) and get 
 the Client Secret
 
-`MANAGEMENT_API_CLIENT_ID` Click on *API Explorer Client* in the [Auth0 Clients page](https://manage.auth0
-.com/#/clients) and get the Client ID. You need to create an API Explorer Client if it does not already exist. This 
+`MANAGEMENT_API_CLIENT_ID` Click on *API Explorer Client* in the [Auth0 Clients page](https://manage.auth0.com/#/clients) and get the Client ID. You need to create an API Explorer Client if it does not already exist. This 
 client is needed to query the Management API
 
 `MANAGEMENT_API_CLIENT_SECRET`  Click on *API Explorer Client* in the [Auth0 Clients page](https://manage.auth0.com/#/clients) and get the Client Secret
  
 `AUTH0_CALLBACK_URL` If you are running the application on localhost then you do not need to set this key. If you 
-deploy the application to a third party service provider like Heroku then you need to specify the value as <Auth0 
-Domain>/callback. You will need to add this url to Allowed Callback URLs list in the Client's settings page in Auth0
+deploy the application to a third party service provider like Heroku then you need to specify the value as 
+`AUTH0_DOMAIN`/callback. You will need to add this url to Allowed Callback URLs list in the Client's settings page in Auth0
 
 
 
@@ -80,19 +79,18 @@ Run the app.
 npm start
 ```
 
-The app will be served at `localhost:3000`. To deploy the application to Heroku create an account in https://www
-.heroku.com/. Then commit the application source files to heroku repo. I recommend using the [heroku cli](https://devcenter.heroku.com/articles/heroku-cli) Add the 
+The app will be served at `localhost:3000`. To deploy the application to Heroku create an account in https://www.heroku.com/. Then commit the application source files to heroku repo. I recommend using the [heroku cli](https://devcenter.heroku.com/articles/heroku-cli) Add the 
 settings from .env file to 
-https://dashboard.heroku.com/apps/<your app name>/settings
+https://dashboard.heroku.com/apps/your-app-name/settings
 
-You might choose to deploy your app in any other location as you deem fit.
+You might choose to deploy your app with any other service provider as per your comfort with their service.
 
 
 ## Explanation of code logic
 The application code uses Auth0 lock to authenticate the user. The Whitelist rule makes sure that only authorized 
 users have access to this application.
  
-If the user is not authorized the user is redirected to page /notAuthorized which shows the error message to the user
+If the user is not authorized the user is redirected to page /notAuthorized which shows the error message to the user.
 Otherwise the user is shown the list of applications and all rules that apply to each application. Following 
 conditions are handled to show the rules per application:
 * Show list of Rules which apply to the application using condition like `if (context.clientName === 'App Name') {`
@@ -123,7 +121,7 @@ For client in clients:
         If rule.script has text like `if (context.clientName !== '{ client name }')` or `if (context.clientID !== '{ client id }')`
         Then: 
              clientDisallowed = Find out client from clients that this rule mentions 
-             If clientDisallowed != client
+             If client != clientDisallowed
              Then:
                 Add this rule to array of client.rules
              
