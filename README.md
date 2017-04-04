@@ -1,15 +1,22 @@
 # Show Rules applied per Application using Auth0 Management API v2
 
+This is a sample application that will list down the Rules running on each Auth0 Client. On successful login, the 
+application page will show the list of all Clients and the Rules that run on each of them. A sample deployment looks as 
+follows:
+![App screenshot](/doc/app-screenshot.png?raw=true)
+
+Please follow the following steps to setup the application code on your localhost.
+
 ## Auth0 configuration
-You need to first create a Node.js client in Auth0. Go to the [Auth0 Clients page](https://manage.auth0.com/#/clients) and click on `Create Client` button. Then select `Regular Web Applications` and click on the Create 
+1. You need to first create a Node.js client in Auth0. Go to the [Auth0 Clients page](https://manage.auth0.com/#/clients) and click on `Create Client` button. Then select `Regular Web Applications` and click on the Create 
 button. Select `Node.js` from the list of available technologies. Give a name to the client, e.g. `ListAppRulesUsingMngmtApiV2`
 
-Add `http://localhost:3000/callback` to the list of Allowed Callback URLs in the client settings page.
+2. Add `http://localhost:3000/callback` to the list of Allowed Callback URLs in the client settings page.
 
-Create a Non Interactive Client `API Explorer Client`. We will need this client to make calls to the Management API 
+3. Create a Non Interactive Client `API Explorer Client`. We will need this client to make calls to the Management API 
 from our application code.
 
-Create a Whitelist Rule with following code
+4. Create a Whitelist Rule with following code
 ```javascript
 function (user, context, callback) {
     if (context.clientName === 'ListAppRulesUsingMngmtApiV2') {
@@ -31,18 +38,19 @@ This way your application can be accessed only by a list of authorized users
 
 ## Running the Sample
 
-Download or git clone this code to your localhost.
+1. Download or git clone this code to your localhost.
 
 ```bash
 git clone git@github.com:souvikbasu/auth0-rules-per-app.git
 cd auth0-rules-per-app
 ```
-Install the dependencies.
+2. Install the dependencies.
 
 ```bash
 npm install
 ```
 
+3. Configure environment variables
 ```bash
 # copy configuration and replace with your own
 cp .env.example .env
@@ -73,7 +81,7 @@ deploy the application to a third party service provider like Heroku then you ne
 
 
 
-Run the app.
+5. Run the app.
 
 ```bash
 npm start
